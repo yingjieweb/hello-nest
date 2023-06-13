@@ -6,11 +6,12 @@ import {
   Param,
   Post,
   Put,
-  ValidationPipe,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AddUserDto } from './dto/addUser.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
+import { DeleteUserDto } from './dto/deleteUser.dto';
 
 export type UserItem = {
   id?: number;
@@ -33,13 +34,18 @@ export class UserController {
     return this.userService.addUser(userData);
   }
 
+  @Get('getUserDetail/:id')
+  getUserDetail(@Param('id') id: string): UserItem {
+    return this.userService.getUserDetail(id);
+  }
+
   @Put('updateUser')
   updateUser(@Body() userData: UpdateUserDto): UserItem[] {
     return this.userService.updateUser(userData);
   }
 
-  @Delete('deleteUser/:id')
-  deleteUser(@Param('id', ValidationPipe) id: string): UserItem[] {
-    return this.userService.deleteUser(id);
+  @Delete('deleteUser')
+  deleteUser(@Query() query: DeleteUserDto): UserItem[] {
+    return this.userService.deleteUser(query.id);
   }
 }
