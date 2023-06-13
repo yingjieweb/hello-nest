@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AddUserDto } from './dto/addUser.dto';
+import { GetUserDetailDto } from './dto/getUserDetail.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
 import { DeleteUserDto } from './dto/deleteUser.dto';
 
@@ -35,7 +36,7 @@ export class UserController {
   }
 
   @Get('getUserDetail/:id')
-  getUserDetail(@Param('id') id: string): UserItem {
+  getUserDetail(@Param('id', GetUserDetailDto) id: string): UserItem {
     return this.userService.getUserDetail(id);
   }
 
