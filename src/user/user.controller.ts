@@ -20,8 +20,10 @@ import { DeleteUserDto } from './dto/deleteUser.dto';
 import { UserItem } from 'src/core/types/user';
 import { SUCCESS_RES, ERROR_RES } from 'src/core/utils/resWrapper.util';
 import { Response } from 'express';
+import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 
 @Controller('/user')
+@ApiTags('用户相关接口')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -32,6 +34,25 @@ export class UserController {
   }
 
   @Post('addUser')
+  @ApiOperation({
+    summary: '获取用户列表',
+    // description: '获取所有的用户列表',
+  })
+  @ApiResponse({
+    status: 200,
+    description: '成功返回 200',
+    schema: {
+      type: 'array',
+      example: [
+        {
+          id: 1,
+          name: '张三',
+          age: 18,
+          gender: 1,
+        },
+      ],
+    },
+  })
   addUser(@Body() userData: AddUserDto): UserItem[] {
     return this.userService.addUser(userData);
   }
