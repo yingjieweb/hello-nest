@@ -7,5 +7,6 @@ export class GetUserDetailDto implements PipeTransform {
     if (targetUserId <= 0) {
       throw new BadRequestException('user id is positive number');
     }
+    return targetUserId;
   }
 }
