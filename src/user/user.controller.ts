@@ -13,13 +13,7 @@ import { AddUserDto } from './dto/addUser.dto';
 import { GetUserDetailDto } from './dto/getUserDetail.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
 import { DeleteUserDto } from './dto/deleteUser.dto';
-
-export type UserItem = {
-  id?: number;
-  name: string;
-  age: number;
-  gender: 1 | 2;
-};
+import { UserItem } from 'src/core/types/user';
 
 @Controller('/user')
 export class UserController {
