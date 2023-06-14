@@ -18,7 +18,7 @@ export class UserService {
     const targetUserArray = this.userList.filter(
       (item) => item.id === parseInt(targetUserId),
     );
-    return targetUserArray[0] || {};
+    return targetUserArray[0];
   }
 
   updateUser(userData: UserItem): UserItem[] {
