@@ -1,8 +1,8 @@
 import { IsNotEmpty, IsString, IsNumber, IsIn } from 'class-validator';
 
 export class AddUserDto {
-  @IsNotEmpty()
-  @IsNumber()
+  @IsNotEmpty({ message: 'id should not be empty' })
+  @IsNumber({ allowNaN: false }, { message: 'id must be a number' })
   id: number;
 
   @IsNotEmpty()
