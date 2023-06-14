@@ -18,6 +18,7 @@ import { GetUserDetailDto } from './dto/getUserDetail.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
 import { DeleteUserDto } from './dto/deleteUser.dto';
 import { UserItem } from 'src/core/types/user';
+import { SUCCESS_RES } from 'src/core/utils/resWrapper.util';
 // import { Response } from 'express';
 
 @Controller('/user')
@@ -25,8 +26,9 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('/getUserList')
-  getUserList(): UserItem[] {
-    return this.userService.getUserList();
+  getUserList(): Common.CommonRes<UserItem[]> {
+    const userList = this.userService.getUserList();
+    return SUCCESS_RES(userList, 'success');
   }
 
   @Post('addUser')
