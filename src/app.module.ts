@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { userBaseModule } from './modules/userBase/userBase.module';
+import { UserDtoModule } from './modules/userDto/userDto.module';
 import { UserMongoModule } from './modules/userMongo/userMongo.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -12,6 +13,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       useUnifiedTopology: true,
     }),
     userBaseModule,
+    UserDtoModule,
     UserMongoModule,
   ],
   controllers: [AppController],
