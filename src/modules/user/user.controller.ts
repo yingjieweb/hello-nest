@@ -10,7 +10,7 @@ import {
   Post,
   Put,
   Query,
-  Res,
+  // Res,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AddUserDto } from './dto/addUser.dto';
@@ -19,7 +19,7 @@ import { UpdateUserDto } from './dto/updateUser.dto';
 import { DeleteUserDto } from './dto/deleteUser.dto';
 import { UserItem } from 'src/core/types/user';
 import { SUCCESS_RES, ERROR_RES } from 'src/core/utils/resWrapper.util';
-import { Response } from 'express';
+// import { Response } from 'express';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 
 @Controller('/user')
@@ -28,9 +28,9 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('/getUserList')
-  getUserList(): Common.CommonRes<UserItem[]> {
-    const userList = this.userService.getUserList();
-    return SUCCESS_RES(userList, 'success');
+  async getUserList(): Promise<Common.CommonRes<UserItem[]>> {
+    const userList = await this.userService.getUserList();
+    return SUCCESS_RES(userList);
   }
 
   @Post('addUser')
@@ -53,10 +53,14 @@ export class UserController {
       ],
     },
   })
-  addUser(@Body() userData: AddUserDto): UserItem[] {
-    return this.userService.addUser(userData);
+  async addUser(
+    @Body() userData: AddUserDto,
+  ): Promise<Common.CommonRes<string>> {
+    await this.userService.addUser(userData);
+    return SUCCESS_RES('Adding a user succeeded');
   }
 
+  // 通过 @HttpCode 设置状态码
   // @Get('getUserDetail/:id')
   // @HttpCode(200)
   // getUserDetail(
@@ -70,26 +74,40 @@ export class UserController {
   //   }
   // }
 
+  // 通过 @Res 设置状态码
+  // @Get('getUserDetail/:id')
+  // getUserDetail(
+  //   @Param('id', GetUserDetailDto) id: string,
+  //   @Res() res: Response,
+  // ): void {
+  //   const targetUser = this.userService.getUserDetail(id);
+  //   if (targetUser) {
+  //     res.status(200).json(SUCCESS_RES(targetUser));
+  //   } else {
+  //     res.status(404).json(ERROR_RES('User was not found'));
+  //   }
+  // }
+
   @Get('getUserDetail/:id')
-  getUserDetail(
+  async getUserDetail(
     @Param('id', GetUserDetailDto) id: string,
-    @Res() res: Response,
-  ): void {
-    const targetUser = this.userService.getUserDetail(id);
-    if (targetUser) {
-      res.status(200).json(SUCCESS_RES(targetUser));
-    } else {
-      res.status(404).json(ERROR_RES('User was not found'));
-    }
+  ): Promise<UserItem | null> {
+    return this.userService.getUserDetail(id);
   }
 
   @Put('updateUser')
-  updateUser(@Body() userData: UpdateUserDto): UserItem[] {
-    return this.userService.updateUser(userData);
+  async updateUser(
+    @Body() userData: UpdateUserDto,
+  ): Promise<Common.CommonRes<string>> {
+    await this.userService.updateUser(userData);
+    return SUCCESS_RES('Updating a user succeeded');
   }
 
   @Delete('deleteUser')
-  deleteUser(@Query() query: DeleteUserDto): UserItem[] {
-    return this.userService.deleteUser(query.id);
+  async deleteUser(
+    @Query() query: DeleteUserDto,
+  ): Promise<Common.CommonRes<string>> {
+    const res = await this.userService.deleteUser(query.id);
+    return SUCCESS_RES('Deleting a user succeeded');
   }
 }

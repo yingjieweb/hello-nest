@@ -1,40 +1,31 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { UserItem } from 'src/core/types/user';
+import { User, UserDocument } from './schema/user.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class UserService {
-  private userList = []; // 没有数据库，暂时通过该方式定义数据
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  getUserList(): UserItem[] {
-    return this.userList;
+  async getUserList(): Promise<UserDocument[]> {
+    return this.userModel.find().exec();
   }
 
-  addUser(userData: UserItem): UserItem[] {
-    this.userList.push(userData);
-    return this.userList;
+  async addUser(userData: UserItem): Promise<UserDocument> {
+    const createdUser = new this.userModel(userData);
+    return createdUser.save();
   }
 
-  getUserDetail(targetUserId: string): UserItem {
-    const targetUserArray = this.userList.filter(
-      (item) => item.id === parseInt(targetUserId),
-    );
-    return targetUserArray[0];
+  async getUserDetail(targetUserId: string): Promise<UserDocument | null> {
+    return this.userModel.findById(targetUserId).exec();
   }
 
-  updateUser(userData: UserItem): UserItem[] {
-    this.userList = this.userList.map((item) => {
-      if (item.id === userData.id) {
-        return userData;
-      }
-      return item;
-    });
-    return this.userList;
+  async updateUser(userData: UserItem): Promise<UserDocument | null> {
+    return this.userModel.findByIdAndUpdate(userData.id, userData).exec();
   }
 
-  deleteUser(deleteId): UserItem[] {
-    this.userList = this.userList.filter(
-      (item) => item.id !== parseInt(deleteId),
-    );
-    return this.userList;
+  async deleteUser(deleteId): Promise<UserDocument | null> {
+    return this.userModel.findByIdAndDelete(deleteId).exec();
   }
 }
