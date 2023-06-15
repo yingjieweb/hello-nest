@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { UserBaseService } from './userBase.service';
 
@@ -30,13 +31,18 @@ export class UserBaseController {
     return this.userBaseService.addUser(userData);
   }
 
+  @Get('getUserDetail/:id')
+  getUserDetail(@Param('id') id: string): UserItem {
+    return this.userBaseService.getUserDetail(id);
+  }
+
   @Put('updateUser')
   updateUser(@Body() userData): UserItem[] {
     return this.userBaseService.updateUser(userData);
   }
 
-  @Delete('deleteUser/:id')
-  deleteUser(@Param('id') id): UserItem[] {
-    return this.userBaseService.deleteUser(id);
+  @Delete('deleteUser')
+  deleteUser(@Query() query): UserItem[] {
+    return this.userBaseService.deleteUser(query.id);
   }
 }

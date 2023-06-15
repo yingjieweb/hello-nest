@@ -14,6 +14,13 @@ export class UserBaseService {
     return this.userList;
   }
 
+  getUserDetail(targetUserId: string): UserItem {
+    const targetUserArray = this.userList.filter(
+      (item) => item.id === parseInt(targetUserId),
+    );
+    return targetUserArray[0] || {};
+  }
+
   updateUser(userData: UserItem): UserItem[] {
     this.userList = this.userList.map((item) => {
       if (item.id === userData.id) {
