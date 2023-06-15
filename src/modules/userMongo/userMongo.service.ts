@@ -5,7 +5,7 @@ import { User, UserDocument } from './schema/user.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class UserService {
+export class UserMongoService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async getUserList(): Promise<UserDocument[]> {

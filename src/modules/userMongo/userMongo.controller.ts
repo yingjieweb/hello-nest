@@ -12,7 +12,7 @@ import {
   Query,
   // Res,
 } from '@nestjs/common';
-import { UserService } from './user.service';
+import { UserMongoService } from './userMongo.service';
 import { AddUserDto } from './dto/addUser.dto';
 import { GetUserDetailDto } from './dto/getUserDetail.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
@@ -22,14 +22,14 @@ import { SUCCESS_RES, ERROR_RES } from 'src/core/utils/resWrapper.util';
 // import { Response } from 'express';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 
-@Controller('/user')
+@Controller('/userMongo')
 @ApiTags('用户相关接口')
-export class UserController {
-  constructor(private readonly userService: UserService) {}
+export class UserMongoController {
+  constructor(private readonly userMongoService: UserMongoService) {}
 
   @Get('/getUserList')
   async getUserList(): Promise<Common.CommonRes<UserItem[]>> {
-    const userList = await this.userService.getUserList();
+    const userList = await this.userMongoService.getUserList();
     return SUCCESS_RES(userList);
   }
 
@@ -56,7 +56,7 @@ export class UserController {
   async addUser(
     @Body() userData: AddUserDto,
   ): Promise<Common.CommonRes<string>> {
-    await this.userService.addUser(userData);
+    await this.userMongoService.addUser(userData);
     return SUCCESS_RES('Adding a user succeeded');
   }
 
@@ -66,7 +66,7 @@ export class UserController {
   // getUserDetail(
   //   @Param('id', GetUserDetailDto) id: string,
   // ): UserItem | HttpException {
-  //   const targetUser = this.userService.getUserDetail(id);
+  //   const targetUser = this.userMongoService.getUserDetail(id);
   //   if (targetUser) {
   //     return targetUser;
   //   } else {
@@ -80,7 +80,7 @@ export class UserController {
   //   @Param('id', GetUserDetailDto) id: string,
   //   @Res() res: Response,
   // ): void {
-  //   const targetUser = this.userService.getUserDetail(id);
+  //   const targetUser = this.userMongoService.getUserDetail(id);
   //   if (targetUser) {
   //     res.status(200).json(SUCCESS_RES(targetUser));
   //   } else {
@@ -92,14 +92,14 @@ export class UserController {
   async getUserDetail(
     @Param('id', GetUserDetailDto) id: string,
   ): Promise<UserItem | null> {
-    return this.userService.getUserDetail(id);
+    return this.userMongoService.getUserDetail(id);
   }
 
   @Put('updateUser')
   async updateUser(
     @Body() userData: UpdateUserDto,
   ): Promise<Common.CommonRes<string>> {
-    await this.userService.updateUser(userData);
+    await this.userMongoService.updateUser(userData);
     return SUCCESS_RES('Updating a user succeeded');
   }
 
@@ -107,7 +107,7 @@ export class UserController {
   async deleteUser(
     @Query() query: DeleteUserDto,
   ): Promise<Common.CommonRes<string>> {
-    const res = await this.userService.deleteUser(query.id);
+    const res = await this.userMongoService.deleteUser(query.id);
     return SUCCESS_RES('Deleting a user succeeded');
   }
 }
