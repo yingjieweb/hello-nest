@@ -2,11 +2,6 @@ import { IsNotEmpty, IsString, IsNumber, IsIn } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class AddUserDto {
-  @IsNotEmpty({ message: 'id should not be empty' })
-  @IsNumber({ allowNaN: false }, { message: 'id must be a number' })
-  @ApiProperty({ example: 1, description: '用户唯一 id' })
-  id: number;
-
   @IsNotEmpty()
   @IsString()
   @ApiProperty({ example: '张三', description: '用户名' })

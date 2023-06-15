@@ -2,10 +2,6 @@ import { IsNotEmpty, IsString, IsNumber, IsIn } from 'class-validator';
 
 export class UpdateUserDto {
   @IsNotEmpty()
-  @IsNumber()
-  id: number;
-
-  @IsNotEmpty()
   @IsString()
   name: string;
 
