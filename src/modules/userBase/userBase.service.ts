@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserItem } from './userBase.controller';
+import { UserItem } from 'src/core/types/user';
 
 @Injectable()
 export class UserBaseService {

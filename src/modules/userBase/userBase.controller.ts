@@ -9,13 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { UserBaseService } from './userBase.service';
-
-export type UserItem = {
-  id?: number;
-  name: string;
-  age: number;
-  gender: 1 | 2;
-};
+import { UserItem } from 'src/core/types/user';
 
 @Controller('/userBase')
 export class UserBaseController {
