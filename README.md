@@ -1,73 +1,11 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Hello Nest 👋
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is a demo repository for learning Nest.js. Here is a detailed documentation [Hello Nest Doc](https://github.com/yingjieweb/hello-nest-doc).
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+2023 年 6 月 21 日，我在[掘金](https://juejin.cn/user/2576910988098888/posts)和 [CSDN](https://blog.csdn.net/Marker__?type=blog) 上发布了一篇关于学习 Nest.js 的文章：[《知道了，去卷后端 ➡️「Nest.js 入门及实践」》](https://juejin.cn/post/7247059220143177783)，截止到 2023 年 10 月 10 日，累计阅读量 3.2k+，点赞 37，评论 26，且掘金一直在给我推送文章被收藏的消息，说明这篇文章大家还是很感兴趣的。👀
 
-## Description
+基于上述背景，为了让大家有更好的阅读体验，也为了让更多人看到这篇文章，我决定将这篇文章迁移到 [GitHub](https://github.com/yingjieweb/hello-nest-doc)，并开源出来，希望能帮助到更多想学习 Nest.js 的小伙伴。🎉
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+其实我从 2023 年 9 月 4 日就开始着手做这件事情了，但因为各种原因，一直拖到了 2023 年 10 月 10 日还尚未完成。目前文章还有存在不足的地方，但我会持续更新，并修复已发现的问题。如果你发现了文章中存在错误的地方，欢迎提 [issue](https://github.com/yingjieweb/hello-nest-doc/issues) 或者 [PR](https://github.com/yingjieweb/hello-nest-doc/pulls)，我会尽快修复。😁
 
-## Installation
-
-```bash
-$ pnpm install
-```
-
-## Running the app
-
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+如果你觉得这篇文章对你有所帮助，[可以点个 Star ⭐️ 支持一下](https://github.com/yingjieweb/hello-nest-doc)，你的支持和认可就是我更新的动力。此外，真的很想搞一个 Github Starstruck 徽章 🤩（**No Fake** 🤔️）。
